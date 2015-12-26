@@ -1,6 +1,6 @@
 # **[==..]** progress
 
-Progress bar
+Progress bar for Crystal
 
 [▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  20.00 %
 
@@ -30,29 +30,37 @@ end
 
 ## Functions
 
-`inc`
+`inc`: a step increase to current tick and print
 
-`tick`
+`tick(n)`: add to current tick and print
 
-`set`
+`set(n)`: Set current tick and print
 
-`done`
+`done`: finish and print
 
-`done?`
+`done?`: is done ?
 
-`current`
+`current`: current tick number
+
+`percent`: completion percentage
 
 ## Options
 
-`complete`
+`complete`: completion character
 
-`incomplete`
+`incomplete`: completion character
 
-`step`
+`step`: default 1
 
-`width`
+`width`: the displayed width of the progress bar (default: 100)
 
-`total`
+`total`: total ticks (default: 100)
+
+## TODO
+
+- [ ] Bar format
+- [ ] Multiple bar
+- [ ] Max bar width
 
 ## Contributing
 

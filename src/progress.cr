@@ -41,14 +41,14 @@ class ProgressBar
     @current >= @total
   end
 
+  def percent
+    @current.to_f / (@total.to_f / 100.to_f)
+  end
+
   private def print
     STDOUT.flush
     STDOUT.print "[#{@complete * position}#{@incomplete * (@width - position)}] #{sprintf(" %.2f %% ", percent)}\r"
     puts if done?
-  end
-
-  private def percent
-    @current.to_f / (@total.to_f / 100.to_f)
   end
 
   private def position
