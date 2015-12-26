@@ -2,11 +2,6 @@
 
 Progress bar for Crystal
 
-[▓▓▓▓▓░░░░░░░░░░░░░░░]  67.25 %
-
-
-![Simple Progress Bar](/images/simple_progress.gif)
-
 ![Colored Progress Bar](/images/colors_progress.gif)
 
 ## Installation
@@ -32,6 +27,8 @@ until bar.done?
   sleep 0.1
 end
 ```
+
+![Simple Progress Bar](/images/simple_progress.gif)
 
 ## Functions
 
