@@ -4,6 +4,11 @@ Progress bar for Crystal
 
 [▓▓▓▓▓░░░░░░░░░░░░░░░]  67.25 %
 
+
+![Simple Progress Bar](/images/simple_progress.gif)
+
+![Colored Progress Bar](/images/colors_progress.gif)
+
 ## Installation
 
 Add this to your application's `shard.yml`:
