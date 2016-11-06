@@ -5,7 +5,7 @@ class ProgressBar
   getter current
 
   def initialize(@total = 100, @step = 1, @width = 100, @complete = "\u2593", @incomplete = "\u2591")
-    @current = 0
+    @current = 0.0
   end
 
   def inc
@@ -14,7 +14,7 @@ class ProgressBar
 
   def tick(n)
     @current += n
-    @current = 0 if @current < 0
+    @current = 0.0 if @current < 0
     @current = @total if @current > @total
     print
   end
