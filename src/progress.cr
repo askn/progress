@@ -13,10 +13,12 @@ class ProgressBar
   end
 
   def tick(n)
+    old_percent = percent
     @current += n
     @current = 0.0 if @current < 0
     @current = @total if @current > @total
-    print
+    new_percent = percent
+    print(new_percent) if new_percent != old_percent
   end
 
   def set(n)
@@ -42,12 +44,12 @@ class ProgressBar
   end
 
   def percent
-    @current.to_f / (@total.to_f / 100.to_f)
+    sprintf "%.2f", @current.to_f / (@total.to_f / 100.to_f)
   end
 
-  private def print
+  private def print(percent)
     STDOUT.flush
-    STDOUT.print "[#{@complete * position}#{@incomplete * (@width - position)}] #{sprintf(" %.2f %% ", percent)}\r"
+    STDOUT.print "[#{@complete * position}#{@incomplete * (@width - position)}]  #{percent} % \r"
     puts if done?
   end
 
