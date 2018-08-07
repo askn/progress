@@ -31,12 +31,12 @@ class ProgressBar
     end
 
     @current = n if @total >= n && n >= 0
-    print
+    print(percent)
   end
 
   def done
     @current = @total
-    print
+    print(percent)
   end
 
   def done?
@@ -48,9 +48,10 @@ class ProgressBar
   end
 
   private def print(percent)
-    STDOUT.flush
-    STDOUT.print "[#{@complete * position}#{@incomplete * (@width - position)}]  #{percent} % \r"
-    puts if done?
+    STDERR.flush
+    STDERR.print "[#{@complete * position}#{@incomplete * (@width - position)}]  #{percent} % \r"
+    STDERR.flush
+    STDERR.print "\n" if done?
   end
 
   private def position
