@@ -7,4 +7,3 @@ until bar.done?
   bar.inc
   sleep 0.1
 end
-

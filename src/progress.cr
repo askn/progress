@@ -12,13 +12,13 @@ class ProgressBar
     tick(@step)
   end
 
-  def tick(n)
+  def tick(n = @step, no_print = false)
     old_percent = percent
     @current += n
     @current = 0.0 if @current < 0
     @current = @total if @current > @total
     new_percent = percent
-    print(new_percent) if new_percent != old_percent
+    print(new_percent) if new_percent != old_percent && no_print == false
   end
 
   def set(n)
