@@ -1,11 +1,12 @@
 require "./progress/*"
 
 class ProgressBar
-  property complete, incomplete, step, width, total
+  property complete, incomplete, step, width, total, output_stream : IO::FileDescriptor
   getter current
 
-  def initialize(@total = 100, @step = 1, @width = 100, @complete = "\u2593", @incomplete = "\u2591")
+  def initialize(@total = 100, @step = 1, @width = 100, @complete = "\u2593", @incomplete = "\u2591", use_stdout = false)
     @current = 0.0
+    @output_stream = use_stdout ? STDOUT : STDERR
   end
 
   def inc
@@ -48,10 +49,10 @@ class ProgressBar
   end
 
   private def print(percent)
-    STDERR.flush
-    STDERR.print "[#{@complete * position}#{@incomplete * (@width - position)}]  #{percent} % \r"
-    STDERR.flush
-    STDERR.print "\n" if done?
+    @output_stream.flush
+    @output_stream.print "[#{@complete * position}#{@incomplete * (@width - position)}]  #{percent} % \r"
+    @output_stream.flush
+    @output_stream.print "\n" if done?
   end
 
   private def position
