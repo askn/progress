@@ -58,6 +58,8 @@ end
 
 `total`: total ticks (default: 100)
 
+`use_stdout`: if true, write progress bar to standard output, otherwise standard error (default: false)
+
 ## TODO
 
 - [ ] Bar format
