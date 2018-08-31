@@ -1,8 +1,11 @@
 require "./progress"
 
 class MultipleProgressBar
-  def initialize
+  property output_stream : IO::FileDescriptor
+
+  def initialize(use_stdout = false)
     @progress_bars = {} of Symbol => ProgressBar
+    @output_stream = use_stdout ? STDOUT : STDERR
   end
 
   def create(name : Symbol)
@@ -20,10 +23,10 @@ class MultipleProgressBar
 
   private def print_bars
     @progress_bars.each do |_, progress|
-      STDOUT.print "[#{progress.complete * position(progress)}#{progress.incomplete * (progress.width - position(progress))}]  #{progress.percent} % \n"
+      @output_stream.print "[#{progress.complete * position(progress)}#{progress.incomplete * (progress.width - position(progress))}]  #{progress.percent} % \n"
     end
 
-    STDOUT.print "\033[#{@progress_bars.size}A"
+    @output_stream.print "\033[#{@progress_bars.size}A"
   end
 
   private def position(progress)
