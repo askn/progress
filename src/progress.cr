@@ -48,6 +48,10 @@ class ProgressBar
     sprintf "%.2f", @current.to_f / (@total.to_f / 100.to_f)
   end
 
+  def print
+    print(percent)
+  end
+
   private def print(percent)
     @output_stream.flush
     @output_stream.print "[#{@complete * position}#{@incomplete * (@width - position)}]  #{percent} % \r"
